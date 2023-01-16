@@ -2,8 +2,13 @@ import { useState, useEffect } from 'react';
 
 import './App.css';
 
-import CardList from './components/card-list/card-list.component';
-import SearchBox from './components/search-box/search-box.component';
+// implementation using classes to create components
+// import CardList from './components/card-list/card-list.component';
+// import SearchBox from './components/search-box/search-box.component';
+
+// implementation using functions to create components
+import CardList from './components/card-list/card-list-function.component';
+import SearchBox from './components/search-box/search-box-function.component';
 
 const App = () => {
 
@@ -17,15 +22,30 @@ const App = () => {
       .then(users => setMonsters(users))
   }, []);
 
-  useEffect(() => {
+  //useEffect with async await
+  useEffect(() => {(
     // monsters = [{name: 'Leanne'}, {name: 'Clementine'}]
-    const newfilteredMonsters = monsters.filter((filteredMonster) => {
-      return filteredMonster.name.toLocaleLowerCase().includes(searchField)
-    });
+    async () => {
+      const response = await fetch('https://jsonplaceholder.typicode.com/users');
+      const newfilteredMonsters = await response.json();
+      setFilteredMonsters(newfilteredMonsters);
+    })();
     // input = 'Lea' => filteredMonsters = [{name: 'Leanne'}]
 
-    setFilteredMonsters(newfilteredMonsters);
+    return () => {}
+    
   }, [monsters, searchField]);
+
+  //useEffect with standard promisses
+  // useEffect(() => {
+  //   // monsters = [{name: 'Leanne'}, {name: 'Clementine'}]
+  //   const newfilteredMonsters = monsters.filter((filteredMonster) => {
+  //     return filteredMonster.name.toLocaleLowerCase().includes(searchField)
+  //   });
+  //   // input = 'Lea' => filteredMonsters = [{name: 'Leanne'}]
+
+  //   setFilteredMonsters(newfilteredMonsters);
+  // }, [monsters, searchField]);
 
   const onSearchChange = (event) => {
     const searchFieldString = event.target.value.toLocaleLowerCase();

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+
 //import App from './App-class'; // implements all of the program using classes
 import App from './App-function'; // implements all of the program using functions
 import reportWebVitals from './reportWebVitals';
