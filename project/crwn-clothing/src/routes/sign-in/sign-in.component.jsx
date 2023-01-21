@@ -17,7 +17,7 @@ const SignIn = () => {
         async () => {
         const response = await getRedirectResult(auth);
         if(response){
-            const userDocRef = await createUserDocumentFromAuth(response.user);
+            await createUserDocumentFromAuth(response.user);
         }
         })();
         // input = 'Lea' => filteredMonsters = [{name: 'Leanne'}]
@@ -33,9 +33,8 @@ const SignIn = () => {
 
     const logGoogleUser = async () => {
         const response = await signInWithGooglePopup();
-        console.log(response);
         const { user } = response;
-        const userDocRef = await createUserDocumentFromAuth(user);
+        await createUserDocumentFromAuth(user);
     }
 
     return (
