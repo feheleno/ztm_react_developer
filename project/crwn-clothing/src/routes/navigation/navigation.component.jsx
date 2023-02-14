@@ -3,17 +3,12 @@ import { Outlet, Link } from 'react-router-dom';
 
 import { signOutUser } from '../../utils/firebase/firebse.utils';
 
-import './navbar.styles.scss'
+import './navigation.styles.scss'
 
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
 import { UserContext } from '../../contexts/user.context';
-const NavBar = () => {
-  const { currentUser, seteCurrentUser} = useContext(UserContext);
-  const signOutHandler = async() => {
-    await signOutUser();
-    seteCurrentUser(null);
-  };
-
+const Navigation = () => {
+  const { currentUser } = useContext(UserContext);
 
   return (
     <Fragment>
@@ -28,7 +23,7 @@ const NavBar = () => {
           {
             currentUser ?
               (
-                <span className='nav-link' onClick={signOutHandler}>SIGN OUT</span>
+                <span className='nav-link' onClick={signOutUser}>SIGN OUT</span>
               ) : (
                 <Link className='nav-link' to='auth'>
                   SIGN IN
@@ -42,4 +37,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar;
+export default Navigation;
