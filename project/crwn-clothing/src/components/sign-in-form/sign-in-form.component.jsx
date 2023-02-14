@@ -81,7 +81,7 @@ const SignInForm = () => {
 
                     <Button type='button' buttonType='google' onClick={signInWithGoogle}>Sign in with Google</Button>
                 </div>
-                <Button type='button' buttonType='google' onClick={signInWithGoogleRedirect}>Sign in with Google Redirect</Button>
+                {/* <Button type='button' buttonType='google' onClick={signInWithGoogleRedirect}>Sign in with Google Redirect</Button> */}
 
             </form>
         </div>
