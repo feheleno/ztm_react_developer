@@ -4,19 +4,19 @@ import { createUserDocumentFromAuth, onAuthStateChangedListener } from '../utils
 // as the actial value we want to access
 export const UserContext = createContext({
     currentUser: null,
-    seteCurrentUser: () => null
+    setCurrentUser: () => null
 });
 
 export const UserProvider = ({ children }) => {
-    const [currentUser, seteCurrentUser] = useState(null);
-    const value = { currentUser, seteCurrentUser };
+    const [currentUser, setCurrentUser] = useState(null);
+    const value = { currentUser, setCurrentUser };
 
     useEffect(() => {
         const unsubscribe = onAuthStateChangedListener((user) => {
             if(user){
                 createUserDocumentFromAuth(user);
             }
-            seteCurrentUser(user);
+            setCurrentUser(user);
         });
         return unsubscribe;
     }, []);
