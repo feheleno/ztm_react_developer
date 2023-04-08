@@ -14,16 +14,16 @@ const increaseCartItem = (cartItems, productToIncrease) => {
 
 const decreaseCartItem = (cartItems, productToDecrease) => {
     const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToDecrease.id);
-    if (existingCartItem.quantity > 1) {
-        return cartItems.map((cartItem) =>
+    
+    if (existingCartItem.quantity === 1) {
+        return cartItems.filter((cartItem) => cartItem.id !== existingCartItem.id);
+    }
+
+    return cartItems.map((cartItem) =>
             cartItem.id === productToDecrease.id
                 ? { ...cartItem, quantity: cartItem.quantity - 1 }
                 : cartItem
         );
-    } 
-    if (existingCartItem.quantity === 1) {
-        return cartItems.filter((cartItem) => cartItem.id !== existingCartItem.id);
-    }
 }
 
 const removeCartItem = (cartItems, productToDecrease) => {
