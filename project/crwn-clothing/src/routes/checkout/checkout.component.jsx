@@ -31,7 +31,7 @@ const Checkout = () => {
           <CheckoutItem key={cartItem.id} item={cartItem} />
         ))}
       <span className="total">
-        Total Cart Value: {totalCartValue}
+        Total: ${totalCartValue}
       </span>
     </div>
   );
