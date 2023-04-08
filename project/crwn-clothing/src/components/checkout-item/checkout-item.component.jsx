@@ -1,13 +1,12 @@
 import { useContext } from 'react';
 
 import { CartContext } from '../../contexts/cart.context';
-
 import Increase from '../increase/increase.component';
 import Decrease from '../decrease/decrease.component';
-
-import './checkout-item.styles.scss';
 import Button from '../button/button.component';
 import Remove from '../remove/remove.component';
+
+import './checkout-item.styles.scss';
 
 const CheckoutItem = ({item}) => {
     const {imageUrl, name, price, quantity} = item;
