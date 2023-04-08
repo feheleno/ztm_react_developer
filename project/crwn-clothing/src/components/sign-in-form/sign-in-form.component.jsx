@@ -4,7 +4,6 @@ import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
 
 import {
-  createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
   signInWithGooglePopup,
   signInWithGoogleRedirect,
