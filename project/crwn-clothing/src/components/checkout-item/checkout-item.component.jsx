@@ -7,21 +7,23 @@ import Decrease from '../decrease/decrease.component';
 
 import './checkout-item.styles.scss';
 import Button from '../button/button.component';
+import Remove from '../remove/remove.component';
 
 const CheckoutItem = ({item}) => {
     const {imageUrl, name, price, quantity} = item;
-    const { addItemToCart, removeItemFromCart } = useContext(CartContext);
+    const { increaseItemToCart, decreaseItemFromCart, removeItemFromCart } = useContext(CartContext);
 
-    const addProductToCart = () => { addItemToCart(item) };
+    const increaseProductToCart = () => { increaseItemToCart(item) };
+    const decreaseProductFromCart = () => { decreaseItemFromCart(item) };
     const removeProductFromCart = () => { removeItemFromCart(item) };
 
     return(
         <div>
             <div><img src={imageUrl} alt={name} /></div>
             <div>{name}</div>
-            <div><Button onClick={removeProductFromCart}><Decrease /></Button>{quantity}<Button onClick={addProductToCart}><Increase /></Button></div>
+            <div><Button onClick={decreaseProductFromCart}><Decrease /></Button>{quantity}<Button onClick={increaseProductToCart}><Increase /></Button></div>
             <div>{price}</div>
-            <div>X</div>
+            <div><Button onClick={removeProductFromCart}><Remove /></Button></div>
         </div>
     );
 };
