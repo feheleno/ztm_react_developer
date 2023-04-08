@@ -7,7 +7,7 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signOut,
-  onAuthStateChanged,
+  onAuthStateChanged
 } from "firebase/auth";
 
 import {
@@ -15,6 +15,8 @@ import {
   doc, //get the document instance
   getDoc, //get the document data
   setDoc, //set the document data
+  collection,
+  writeBatch
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -28,6 +30,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
+// eslint-disable-next-line no-unused-vars
 const firebaseApp = initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
@@ -47,6 +50,19 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 };
 
 export const db = getFirestore();
+
+export const addCollectionAndDocumentos = async (collectionKey, objectsToAdd) => {
+  const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
+
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
+  });
+
+  await batch.commit();
+  console.log("done");
+}
 
 export const createUserDocumentFromAuth = async (
   userAuth,

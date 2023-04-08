@@ -1,6 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
-import SHOP_DATA from "../shop-data.json";
+import { addCollectionAndDocumentos } from "../utils/firebase/firebse.utils";
 
 //this is the actual value you want to access
 export const ProductsContext = createContext({
@@ -16,7 +16,7 @@ export const ProductsContext = createContext({
 });
 
 export const ProductsProvider = ({ children }) => {
-  const [products] = useState(SHOP_DATA);
+  const [products] = useState([]);
   const value = { products };
 
   return (
