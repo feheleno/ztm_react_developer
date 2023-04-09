@@ -71,8 +71,8 @@ export const addCollectionAndDocuments = async (
 
 export const getCategoriesAndDocuments = async () => {
   const collectionRef = collection(db, "categories");
-  const query = query(collectionRef);
-  const querySnapshot = await getDocs(query);
+  const categoriesQuery = query(collectionRef);
+  const querySnapshot = await getDocs(categoriesQuery);
 
   const categoryMap = querySnapshot.docs.reduce((accumulator, docSnapshot) => {
     const { title, items } = docSnapshot.data();
