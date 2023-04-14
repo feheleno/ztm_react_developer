@@ -1,12 +1,13 @@
 import { useContext } from "react";
 
 import { CartContext } from "../../contexts/cart.context";
-import Increase from "../increase/increase.component";
-import Decrease from "../decrease/decrease.component";
+import IncreaseIcon from "../increase/increase.component";
+import DecreaseIcon from "../decrease/decrease.component";
 import Button from "../button/button.component";
-import Remove from "../remove/remove.component";
+import RemoveIcon from "../remove/remove.component";
+import { CheckoutItemContainer, DecreaseSign, IncreaseSign, ImageContainer, Name, Quantity, Value, Price, RemoveSign } from './checkout-item.styles';
 
-import "./checkout-item.styles.scss";
+
 
 const CheckoutItem = ({ item }) => {
   const { imageUrl, name, price, quantity } = item;
@@ -24,27 +25,27 @@ const CheckoutItem = ({ item }) => {
   };
 
   return (
-    <div className="checkout-item-container">
-      <div className="image-container">
+    <CheckoutItemContainer>
+      <ImageContainer>
         <img src={imageUrl} alt={`${name}`} />
-      </div>
-      <div className="name">{name}</div>
-      <div className="quantity">
-        <Button buttonType="checkout_item" onClick={decreaseProductFromCart}>
-          <Decrease />
-        </Button>
-        <span className="value">{quantity}</span>
-        <Button buttonType="checkout_item" onClick={increaseProductToCart}>
-          <Increase />
-        </Button>
-      </div>
-      <div className="price">{price}</div>
-      <div className="remove-button">
+      </ImageContainer>
+      <Name>{name}</Name>
+      <Quantity>
+        <DecreaseSign onClick={decreaseProductFromCart}>
+          <DecreaseIcon />
+        </DecreaseSign>
+        <Value>{quantity}</Value>
+        <IncreaseSign onClick={increaseProductToCart}>
+          <IncreaseIcon />
+        </IncreaseSign>
+      </Quantity>
+      <Price>{price}</Price>
+      <RemoveSign>
         <Button buttonType="checkout_item" onClick={removeProductFromCart}>
-          <Remove />
+          <RemoveIcon />
         </Button>
-      </div>
-    </div>
+      </RemoveSign>
+    </CheckoutItemContainer>
   );
 };
 

@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
 
-const Decrease = () => {
+
+const DecreaseIcon = () => {
   return (
     <div>
       <FontAwesomeIcon icon={faMinus} />
@@ -9,4 +10,4 @@ const Decrease = () => {
   );
 };
 
-export default Decrease;
+export default DecreaseIcon;

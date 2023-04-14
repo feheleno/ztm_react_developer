@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-const Remove = () => {
+const RemoveIcon = () => {
   return (
     <div>
       <FontAwesomeIcon icon={faXmark} />
@@ -9,4 +9,4 @@ const Remove = () => {
   );
 };
 
-export default Remove;
+export default RemoveIcon;
