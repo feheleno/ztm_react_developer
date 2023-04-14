@@ -1,11 +1,8 @@
 import { useContext } from "react";
 
 import { CartContext } from "../../contexts/cart.context";
-import IncreaseIcon from "../increase/increase.component";
-import DecreaseIcon from "../decrease/decrease.component";
-import Button from "../button/button.component";
-import RemoveIcon from "../remove/remove.component";
-import { CheckoutItemContainer, DecreaseSign, IncreaseSign, ImageContainer, Name, Quantity, Value, Price, RemoveSign } from './checkout-item.styles';
+import { DecreaseProductIcon, IncreaseProductIcon, RemoveProductIcon } from '../icons/icons.component'
+import { CheckoutItemContainer, DecreaseSign, IncreaseSign, ImageContainer, Name, Quantity, Value, Price, RemoveSign, Img } from './checkout-item.styles';
 
 
 
@@ -27,23 +24,21 @@ const CheckoutItem = ({ item }) => {
   return (
     <CheckoutItemContainer>
       <ImageContainer>
-        <img src={imageUrl} alt={`${name}`} />
+        <Img src={imageUrl} alt={`${name}`} />
       </ImageContainer>
       <Name>{name}</Name>
       <Quantity>
         <DecreaseSign onClick={decreaseProductFromCart}>
-          <DecreaseIcon />
+          <DecreaseProductIcon />
         </DecreaseSign>
         <Value>{quantity}</Value>
         <IncreaseSign onClick={increaseProductToCart}>
-          <IncreaseIcon />
+          <IncreaseProductIcon />
         </IncreaseSign>
       </Quantity>
       <Price>{price}</Price>
-      <RemoveSign>
-        <Button buttonType="checkout_item" onClick={removeProductFromCart}>
-          <RemoveIcon />
-        </Button>
+      <RemoveSign onClick={removeProductFromCart}>
+          <RemoveProductIcon />
       </RemoveSign>
     </CheckoutItemContainer>
   );

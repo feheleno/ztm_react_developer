@@ -35,7 +35,7 @@ export const Price = styled.div`
   width: 23%;
 `;
 
-export const DecreaseSign = styled.div`
+export const DecreaseSign = styled.span`
   font-size: 15px;
   background-color: white;
   color: black;
@@ -43,7 +43,7 @@ export const DecreaseSign = styled.div`
   cursor: pointer;
 `;
 
-export const IncreaseSign = styled.div`
+export const IncreaseSign = styled.span`
   font-size: 15px;
   background-color: white;
   color: black;
