@@ -9,7 +9,7 @@ import {
   signInWithGoogleRedirect,
 } from "../../utils/firebase/firebse.utils";
 
-import "./sign-in-form.styles.scss";
+import { SignInContainer, ButtonsContainer } from './sign-in-form.styles';
 
 const defaultFormFields = {
   email: "",
@@ -59,7 +59,7 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="sign-in-container">
+    <SignInContainer>
       <h2>Already have an account?</h2>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
@@ -81,20 +81,20 @@ const SignInForm = () => {
           value={password}
         />
 
-        <div className="buttons-container">
+        <ButtonsContainer google_redirect={false}>
           <Button type="submit">Sign In</Button>
 
           <Button type="button" buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle}>
             Sign in with Google
           </Button>
-        </div>
-        <div className="buttons-container google-redirect">
+        </ButtonsContainer>
+        <ButtonsContainer google_redirect={true}>
           <Button type="button" buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogleRedirect}>
             Sign in with Google Redirect
           </Button>
-        </div>
+        </ButtonsContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 
