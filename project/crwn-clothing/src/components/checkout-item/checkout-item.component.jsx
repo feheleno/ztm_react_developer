@@ -1,10 +1,23 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 
-import { CartContext } from "../../contexts/cart.context";
-import { DecreaseProductIcon, IncreaseProductIcon, RemoveProductIcon } from '../icons/icons.component'
-import { CheckoutItemContainer, DecreaseSign, IncreaseSign, ImageContainer, Name, Quantity, Value, Price, RemoveSign, Img } from './checkout-item.styles';
-
-
+import { CartContext } from '../../contexts/cart.context';
+import {
+  DecreaseProductIcon,
+  IncreaseProductIcon,
+  RemoveProductIcon,
+} from '../icons/icons.component';
+import {
+  CheckoutItemContainer,
+  DecreaseSign,
+  IncreaseSign,
+  ImageContainer,
+  Name,
+  Quantity,
+  Value,
+  Price,
+  RemoveSign,
+  Img,
+} from './checkout-item.styles';
 
 const CheckoutItem = ({ item }) => {
   const { imageUrl, name, price, quantity } = item;
@@ -38,7 +51,7 @@ const CheckoutItem = ({ item }) => {
       </Quantity>
       <Price>{price}</Price>
       <RemoveSign onClick={removeProductFromCart}>
-          <RemoveProductIcon />
+        <RemoveProductIcon />
       </RemoveSign>
     </CheckoutItemContainer>
   );

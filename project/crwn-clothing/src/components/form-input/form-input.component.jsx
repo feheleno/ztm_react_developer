@@ -1,4 +1,3 @@
-
 import { Group, Input, FormInputLabel } from './form-input.styles';
 
 const FormInput = ({ label, ...otherProps }) => {

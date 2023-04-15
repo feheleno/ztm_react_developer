@@ -1,8 +1,8 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from 'react';
 import {
   createUserDocumentFromAuth,
   onAuthStateChangedListener,
-} from "../utils/firebase/firebse.utils";
+} from '../utils/firebase/firebse.utils';
 
 // as the actial value we want to access
 export const UserContext = createContext({

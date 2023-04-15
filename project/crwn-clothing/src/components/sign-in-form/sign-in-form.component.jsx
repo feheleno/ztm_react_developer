@@ -1,19 +1,19 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
-import FormInput from "../form-input/form-input.component";
+import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
+import FormInput from '../form-input/form-input.component';
 
 import {
   signInAuthUserWithEmailAndPassword,
   signInWithGooglePopup,
   signInWithGoogleRedirect,
-} from "../../utils/firebase/firebse.utils";
+} from '../../utils/firebase/firebse.utils';
 
 import { SignInContainer, ButtonsContainer } from './sign-in-form.styles';
 
 const defaultFormFields = {
-  email: "",
-  password: "",
+  email: '',
+  password: '',
 };
 
 const SignInForm = () => {
@@ -46,11 +46,11 @@ const SignInForm = () => {
       await signInAuthUserWithEmailAndPassword(email, password);
     } catch (e) {
       switch (e.code) {
-        case "auth/wrong-password":
-          alert("Incorrect password for email");
+        case 'auth/wrong-password':
+          alert('Incorrect password for email');
           break;
-        case "auth/user-not-found":
-          alert("No user associated with this email");
+        case 'auth/user-not-found':
+          alert('No user associated with this email');
           break;
         default:
           console.log(e);
@@ -64,32 +64,40 @@ const SignInForm = () => {
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
-          label="Email"
-          type="email"
+          label='Email'
+          type='email'
           required
           onChange={handleChange}
-          name="email"
+          name='email'
           value={email}
         />
 
         <FormInput
-          label="Password"
-          type="password"
+          label='Password'
+          type='password'
           required
           onChange={handleChange}
-          name="password"
+          name='password'
           value={password}
         />
 
         <ButtonsContainer google_redirect={false}>
-          <Button type="submit">Sign In</Button>
+          <Button type='submit'>Sign In</Button>
 
-          <Button type="button" buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle}>
+          <Button
+            type='button'
+            buttonType={BUTTON_TYPE_CLASSES.google}
+            onClick={signInWithGoogle}
+          >
             Sign in with Google
           </Button>
         </ButtonsContainer>
         <ButtonsContainer google_redirect={true}>
-          <Button type="button" buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogleRedirect}>
+          <Button
+            type='button'
+            buttonType={BUTTON_TYPE_CLASSES.google}
+            onClick={signInWithGoogleRedirect}
+          >
             Sign in with Google Redirect
           </Button>
         </ButtonsContainer>

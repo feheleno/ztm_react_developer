@@ -1,10 +1,10 @@
-import ProductCard from "../product-card/product-card.component";
+import ProductCard from '../product-card/product-card.component';
 
 import {
   CategoryPreviewContainer,
   Preview,
   Title,
-} from "./category-preview.styles.jsx";
+} from './category-preview.styles.jsx';
 
 const CategoryPreview = ({ title, products }) => {
   return (
